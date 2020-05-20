@@ -38,6 +38,7 @@
             }
         },
         mounted() {
+            //Login时候已经拿到了各大风场的经纬度，这个经纬度需要不同界面共同使用
             this.shebei = this.$store.state.latlong;
         },
         methods:{
@@ -95,32 +96,7 @@
                 this.$nextTick(()=>{
                     this.hackReset = true
                 })
-            },
-
-            // fengchang_click(number){
-            //     //先清空shebei
-            //
-            //
-            //     // this.shebei =[{
-            //     //     lat: '',
-            //     //     lng: ''
-            //     // }]
-            //     this.$store.dispatch("getSubTypeData",number);
-            //     setTimeout(()=>{  console.log(this.$store.state.shebei); }, 3000);
-            //
-            //         // //设置缩放等级和地图中心
-            //         this.zoom = 14;
-            //         this.center={
-            //             lng: this.$store.state.shebei[1].lat,
-            //             lat: this.$store.state.shebei[1].lng
-            //         }
-            //
-            //     //重新渲染百度地图DOM
-            //     this.hackReset = false
-            //     this.$nextTick(()=>{
-            //         this.hackReset = true
-            //     })
-            // }
+            }
         }
     }
 </script>

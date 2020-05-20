@@ -40,7 +40,6 @@
 
 <script>
     import $ from "jquery";
-
     export default {
         name: "SideBar",
         mounted() {
@@ -52,6 +51,7 @@
                 });
             });
         },
+
         methods:{
             //塞罕坝风场 10001
             saihanba(){

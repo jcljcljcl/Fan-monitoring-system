@@ -27,75 +27,11 @@ router.get('/lat_data', function(req, res, next) {
     })
 });
 
-
-//下载realtime中的数据
-//塞罕坝风场数据10001
-router.get('/saihanba_data', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM realtime WHERE subtype = 10001 ORDER BY id",function (error,results,fields) {
-        res.json(results)
-    })
-});
-//麒麟山风场数据10002
-router.get('/qilinshan_data', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM realtime WHERE subtype = 10002 ORDER BY id",function (error,results,fields) {
-        res.json(results)
-    })
-});
-//锡林浩特风场数据10003
-router.get('/xilinhaote_data', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM realtime WHERE subtype = 10003 ORDER BY id",function (error,results,fields) {
-        res.json(results)
-    })
-})
-//红松洼风场数据10004
-router.get('/hongsongwa_data', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM realtime WHERE subtype = 10004 ORDER BY id",function (error,results,fields) {
-        res.json(results)
-    })
-});
-//依兰风场数据20001
-router.get('/yilan_data', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM realtime WHERE subtype = 20001 ORDER BY id",function (error,results,fields) {
-        res.json(results)
-    })
-});
-//昌图风场数据20002
-router.get('/changtu_data', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM realtime WHERE subtype = 20002 ORDER BY id",function (error,results,fields) {
-        res.json(results)
-    })
-});
-//东大桥风场数据30001
-router.get('/dongdaqiao_data', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM realtime WHERE subtype = 30001 ORDER BY id",function (error,results,fields) {
-        res.json(results)
-    })
-});
-//慈溪风场数据30002
-router.get('/cixi_data', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM realtime WHERE subtype = 30002 ORDER BY id",function (error,results,fields) {
-        res.json(results)
-    })
-});
-//南澳风场数据40001
-router.get('/nanao_data', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM realtime WHERE subtype = 40001 ORDER BY id",function (error,results,fields) {
-        res.json(results)
-    })
-});
-//上川岛风场数据40002
-router.get('/shangchuandao_data', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM realtime WHERE subtype = 40002 ORDER BY id",function (error,results,fields) {
+//获取不同风场的实时数据
+router.get('/fengchang_data', function(req, res, next) {
+    var id = req.query[0]
+    //根据id查询数据
+    connection_fan.query("SELECT * FROM realtime WHERE subtype = "+id+" ORDER BY id",function (error,results,fields) {
         res.json(results)
     })
 });
@@ -103,151 +39,23 @@ router.get('/shangchuandao_data', function(req, res, next) {
 
 //下载history中的最近一段时间的7个数据
 //塞罕坝风场数据10001
-router.get('/saihanba_history', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM history WHERE subtype = 10001 ORDER BY sendtime DESC limit 7",function (error,results,fields) {
-        res.json(results)
-    })
-});
-//麒麟山风场数据10002
-router.get('/qilinshan_history', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM history WHERE subtype = 10002 ORDER BY sendtime DESC limit 7",function (error,results,fields) {
-        res.json(results)
-    })
-});
-//锡林浩特风场数据10003
-router.get('/xilinhaote_history', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM history WHERE subtype = 10003 ORDER BY sendtime DESC limit 7",function (error,results,fields) {
-        res.json(results)
-    })
-})
-//红松洼风场数据10004
-router.get('/hongsongwa_history', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM history WHERE subtype = 10004 ORDER BY sendtime DESC limit 7",function (error,results,fields) {
-        res.json(results)
-    })
-});
-//依兰风场数据20001
-router.get('/yilan_history', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM history WHERE subtype = 20001 ORDER BY sendtime DESC limit 7",function (error,results,fields) {
-        res.json(results)
-    })
-});
-//昌图风场数据20002
-router.get('/changtu_history', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM history WHERE subtype = 20002 ORDER BY sendtime DESC limit 7",function (error,results,fields) {
-        res.json(results)
-    })
-});
-//东大桥风场数据30001
-router.get('/dongdaqiao_history', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM history WHERE subtype = 30001 ORDER BY sendtime DESC limit 7",function (error,results,fields) {
-        res.json(results)
-    })
-});
-//慈溪风场数据30002
-router.get('/cixi_history', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM history WHERE subtype = 30002 ORDER BY sendtime DESC limit 7",function (error,results,fields) {
-        res.json(results)
-    })
-});
-//南澳风场数据40001
-router.get('/nanao_history', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM history WHERE subtype = 40001 ORDER BY sendtime DESC limit 7",function (error,results,fields) {
-        res.json(results)
-    })
-});
-//上川岛风场数据40002
-router.get('/shangchuandao_history', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM history WHERE subtype = 40002 ORDER BY sendtime DESC limit 7",function (error,results,fields) {
+router.get('/fengchang_history', function(req, res, next) {
+    var id = req.query[0]
+    //根据id查询数据
+    connection_fan.query("SELECT * FROM history WHERE subtype = "+id+" ORDER BY sendtime DESC limit 7",function (error,results,fields) {
         res.json(results)
     })
 });
 
 
 //下载history中的同一subtype下所有flag=2的数据，在后续处理中如果其status=2，则为故障数据，否则为虚假数据
-//塞罕坝风场数据10001
-router.get('/saihanba_error', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM history WHERE subtype = 10001 AND flag = 2 ORDER BY sendtime DESC",function (error,results,fields) {
+router.get('/fengchang_error', function(req, res, next) {
+    var id = req.query[0]
+    //根据id查询数据
+    connection_fan.query("SELECT * FROM history WHERE subtype = "+id+" AND flag = 2 ORDER BY sendtime DESC",function (error,results,fields) {
         res.json(results)
     })
 });
-//麒麟山风场数据10002
-router.get('/qilinshan_error', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM history WHERE subtype = 10002 AND flag = 2 ORDER BY sendtime DESC",function (error,results,fields) {
-        res.json(results)
-    })
-});
-//锡林浩特风场数据10003
-router.get('/xilinhaote_error', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM history WHERE subtype = 10003 AND flag = 2 ORDER BY sendtime DESC",function (error,results,fields) {
-        res.json(results)
-    })
-})
-//红松洼风场数据10004
-router.get('/hongsongwa_error', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM history WHERE subtype = 10004 AND flag = 2 ORDER BY sendtime DESC",function (error,results,fields) {
-        res.json(results)
-    })
-});
-//依兰风场数据20001
-router.get('/yilan_error', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM history WHERE subtype = 20001 AND flag = 2 ORDER BY sendtime DESC",function (error,results,fields) {
-        res.json(results)
-    })
-});
-//昌图风场数据20002
-router.get('/changtu_error', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM history WHERE subtype = 20002 AND flag = 2 ORDER BY sendtime DESC",function (error,results,fields) {
-        res.json(results)
-    })
-});
-//东大桥风场数据30001
-router.get('/dongdaqiao_error', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM history WHERE subtype = 30001 AND flag = 2 ORDER BY sendtime DESC",function (error,results,fields) {
-        res.json(results)
-    })
-});
-//慈溪风场数据30002
-router.get('/cixi_error', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM history WHERE subtype = 30002 AND flag = 2 ORDER BY sendtime DESC",function (error,results,fields) {
-        res.json(results)
-    })
-});
-//南澳风场数据40001
-router.get('/nanao_error', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM history WHERE subtype = 40001 AND flag = 2 ORDER BY sendtime DESC",function (error,results,fields) {
-        res.json(results)
-    })
-});
-//上川岛风场数据40002
-router.get('/shangchuandao_error', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM history WHERE subtype = 40002 AND flag = 2 ORDER BY sendtime DESC",function (error,results,fields) {
-        res.json(results)
-    })
-});
-
-
-
 
 
 
@@ -273,76 +81,12 @@ router.get('/total_error', function(req, res, next) {
     })
 });
 
-
-//塞罕坝风场数据10001
-router.get('/saihanba_count', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM history WHERE subtype = 10001 AND status = 2 AND DATE(sendtime)>'" + historytime + "'",function (error,results,fields) {
+router.get('/fengchang_count', function(req, res, next) {
+    var id = req.query[0]
+    //根据id查询数据
+    connection_fan.query("SELECT * FROM history WHERE subtype = "+id+" AND status = 2 AND DATE(sendtime)>'" + historytime + "'",function (error,results,fields) {
         res.json(results)
         console.log(results);
-    })
-});
-//麒麟山风场数据10002
-router.get('/qilinshan_count', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM history WHERE subtype = 10002 AND status = 2 AND DATE(sendtime)>'" + historytime + "'",function (error,results,fields) {
-        res.json(results)
-    })
-});
-//锡林浩特风场数据10003
-router.get('/xilinhaote_count', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM history WHERE subtype = 10003 AND status = 2 AND DATE(sendtime)>'" + historytime + "'",function (error,results,fields) {
-        res.json(results)
-    })
-})
-//红松洼风场数据10004
-router.get('/hongsongwa_count', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM history WHERE subtype = 10004 AND status = 2 AND DATE(sendtime)>'" + historytime + "'",function (error,results,fields) {
-        res.json(results)
-    })
-});
-//依兰风场数据20001
-router.get('/yilan_count', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM history WHERE subtype = 20001 AND status = 2 AND DATE(sendtime)>'" + historytime + "'",function (error,results,fields) {
-        res.json(results)
-    })
-});
-//昌图风场数据20002
-router.get('/changtu_count', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM history WHERE subtype = 20002 AND status = 2 AND DATE(sendtime)>'" + historytime + "'",function (error,results,fields) {
-        res.json(results)
-    })
-});
-//东大桥风场数据30001
-router.get('/dongdaqiao_count', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM history WHERE subtype = 30001 AND status = 2 AND DATE(sendtime)>'" + historytime + "'",function (error,results,fields) {
-        res.json(results)
-    })
-});
-//慈溪风场数据30002
-router.get('/cixi_count', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM history WHERE subtype = 30002 AND status = 2 AND DATE(sendtime)>'" + historytime + "'",function (error,results,fields) {
-        res.json(results)
-    })
-});
-//南澳风场数据40001
-router.get('/nanao_count', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM history WHERE subtype = 40001 AND status = 2 AND DATE(sendtime)>'" + historytime + "'",function (error,results,fields) {
-        res.json(results)
-    })
-});
-//上川岛风场数据40002
-router.get('/shangchuandao_count', function(req, res, next) {
-    //查询数据
-    connection_fan.query("SELECT * FROM history WHERE subtype = 40002 AND status = 2 AND DATE(sendtime)>'" + historytime + "'",function (error,results,fields) {
-        res.json(results)
     })
 });
 

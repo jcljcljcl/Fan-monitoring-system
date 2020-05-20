@@ -235,8 +235,9 @@
                     fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
                     sources: [{
                         type: "",//这里的种类支持很多种：基本视频格式、直播、流媒体等，具体可以参看git网址项目
-                        src: "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" //url地址
-                        //src: "rtmp://localhost/live/livestream", // <—rtmp直播地址
+                        src: "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" //测试mp4地址
+                        //src:"116.213.200.53/tslsChannelLive/PCG0DuD/liveCCTV"//测试地址
+                        //src: "rtmp://localhost/live/livestream", // <—手机 APP rtmp直播地址
                     }],
                     poster: "../../static/images/test.jpg", //你的封面地址
                     // width: document.documentElement.clientWidth, //播放器宽度
